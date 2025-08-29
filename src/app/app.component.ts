@@ -24,7 +24,15 @@ import { TaskListComponent } from './components/task-list.component';
       </main>
 
       <footer class="app-footer">
-        <p>&copy; 2024 Task Timers. Built with Angular 19.</p>
+        <div class="footer-content">
+          <p>&copy; 2024 Task Timers. Built with Angular 19.</p>
+          <p class="footer-link">
+            Missing a feature? 
+            <a href="https://github.com/PhewTools/task-timers" target="_blank" rel="noopener noreferrer">
+              Submit a PR to our repo!
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
   `,
@@ -89,14 +97,36 @@ import { TaskListComponent } from './components/task-list.component';
       background-color: #343a40;
       color: white;
       text-align: center;
-      padding: 1rem 0;
+      padding: 1.5rem 0;
       margin-top: auto;
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     .app-footer p {
       margin: 0;
       font-size: 0.9rem;
       opacity: 0.8;
+    }
+
+    .footer-link {
+      margin-top: 0.5rem;
+    }
+
+    .footer-link a {
+      color: #17a2b8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .footer-link a:hover {
+      color: #20c997;
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
@@ -115,6 +145,10 @@ import { TaskListComponent } from './components/task-list.component';
       .container {
         padding: 0 15px;
       }
+
+      .footer-content {
+        padding: 0 15px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -124,6 +158,10 @@ import { TaskListComponent } from './components/task-list.component';
 
       .app-header {
         padding: 1.5rem 0;
+      }
+
+      .app-footer {
+        padding: 1rem 0;
       }
     }
   `]
