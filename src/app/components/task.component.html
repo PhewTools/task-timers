@@ -1,0 +1,47 @@
+<div class="task-card" [class.completed]="task.completed" [class.running]="task.isRunning">
+  <div class="task-header">
+    <div class="task-info">
+      <h3 class="task-title" [class.completed-text]="task.completed">
+        {{ task.title }}
+      </h3>
+      <p class="task-description" *ngIf="task.description">
+        {{ task.description }}
+      </p>
+    </div>
+    <div class="task-actions">
+      <button 
+        class="btn btn-primary" 
+        (click)="toggleTimer()"
+        [disabled]="task.completed"
+      >
+        {{ task.isRunning ? '⏸️ Stop' : '▶️ Start' }}
+      </button>
+      <button 
+        class="btn btn-secondary" 
+        (click)="toggleComplete()"
+      >
+        {{ task.completed ? '↩️ Undo' : '✅ Complete' }}
+      </button>
+      <button 
+        class="btn btn-danger" 
+        (click)="deleteTask()"
+      >
+        🗑️ Delete
+      </button>
+    </div>
+  </div>
+  
+  <div class="task-timer">
+    <div class="timer-display">
+      <span class="timer-label">Total Time:</span>
+      <span class="timer-value">{{ taskService.formatTime(task.totalTime) }}</span>
+    </div>
+    <div class="timer-status" *ngIf="task.isRunning">
+      <span class="running-indicator">⏱️ Running...</span>
+    </div>
+  </div>
+  
+  <div class="task-meta">
+    <small>Created: {{ task.createdAt | date:'short' }}</small>
+  </div>
+</div>
