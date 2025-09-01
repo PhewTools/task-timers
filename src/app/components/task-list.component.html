@@ -41,26 +41,33 @@
     </button>
   </div>
 
-  <div class="task-list" *ngIf="filteredTasks.length > 0; else emptyState">
-    <app-task 
-      *ngFor="let task of filteredTasks; trackBy: trackByTaskId"
-      [task]="task"
-    ></app-task>
-  </div>
-
-  <ng-template #emptyState>
+  @if (filteredTasks.length > 0) {
+    <div class="task-list">
+      @for (task of filteredTasks; track task.id) {
+      <app-task 
+        [task]="task"
+      ></app-task>
+      }
+    </div>
+  } @else {
     <div class="empty-state">
       <div class="empty-icon">📝</div>
       <h3>No tasks yet</h3>
-      <p *ngIf="currentFilter === 'all'">
-        Start by adding your first task above!
-      </p>
-      <p *ngIf="currentFilter === 'active'">
-        No active tasks. Add a new task to get started!
-      </p>
-      <p *ngIf="currentFilter === 'completed'">
-        No completed tasks yet. Complete some tasks to see them here!
-      </p>
+      @if (currentFilter === 'all') {
+        <p>
+          Start by adding your first task above!
+        </p>
+      }
+      @if (currentFilter === 'active') {
+        <p>
+          No active tasks. Add a new task to get started!
+        </p>
+      }
+      @if (currentFilter === 'completed') {
+        <p>
+          No completed tasks yet. Complete some tasks to see them here!
+        </p>
+      }
     </div>
-  </ng-template>
+  }
 </div>

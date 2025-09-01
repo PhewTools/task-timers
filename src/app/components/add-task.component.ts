@@ -13,7 +13,7 @@ import { TaskService } from '../services/task.service';
 export class AddTaskComponent {
   taskTitle: string = '';
   taskDescription: string = '';
-  isCollapsed: boolean = false;
+  isCollapsed: boolean = true;
 
   constructor(private taskService: TaskService) {}
 
