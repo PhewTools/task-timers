@@ -4,9 +4,11 @@
       <h3 class="task-title" [class.completed-text]="task.completed">
         {{ task.title }}
       </h3>
-      <p class="task-description" *ngIf="task.description">
+      @if (task.description) {
+      <p class="task-description" >
         {{ task.description }}
       </p>
+      }
     </div>
     <div class="task-actions">
       <button 
@@ -36,9 +38,11 @@
       <span class="timer-label">Total Time:</span>
       <span class="timer-value">{{ taskService.formatTime(task.totalTime) }}</span>
     </div>
-    <div class="timer-status" *ngIf="task.isRunning">
+    @if (task.isRunning) {
+    <div class="timer-status">
       <span class="running-indicator">⏱️ Running...</span>
     </div>
+    }
   </div>
   
   <div class="task-meta">
